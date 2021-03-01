@@ -12,16 +12,20 @@ const SEO = []
 
 commitMessages.forEach((commitMessage) => {
   if (commitMessage.startsWith('feature: ')) {
-    newFeatures.push(commitMessage)
+    const message = commitMessage.split('feature:')[1] + '\n'
+    newFeatures.push(message)
   }
   if (commitMessage.startsWith('bug: ')) {
-    bugFixes.push(commitMessage)
+    const message = commitMessage.split('bug:')[1] + '\n'
+    bugFixes.push(message)
   }
   if (commitMessage.startsWith('behind: ')) {
-    behindTheScenes.push(commitMessage)
+    const message = commitMessage.split('behind:')[1] + '\n'
+    behindTheScenes.push(message)
   }
   if (commitMessage.startsWith('seo: ')) {
-    SEO.push(commitMessage)
+    const message = commitMessage.split('seo:')[1] + '\n'
+    SEO.push(message)
   }
 })
 
@@ -31,24 +35,24 @@ const newVersion = currentVersion + 1
 let newChangelog = `#(${new Date().toISOString().split('T')[0]}) - v${newVersion} \n\n`
 
 if (newFeatures.length > 0) {
-  newChangelog = newChangelog + 'New features \n'
+  newChangelog = newChangelog + 'New features: \n'
   newFeatures.forEach((newFeature) => (newChangelog = newChangelog + newFeature))
-  newChangelog = newChangelog + '\n'
+  newChangelog = newChangelog + '\n\n'
 }
 if (bugFixes.length > 0) {
-  newChangelog = newChangelog + 'New features \n'
+  newChangelog = newChangelog + 'Bug fixes: \n'
   bugFixes.forEach((bugFix) => (newChangelog = newChangelog + bugFix))
-  newChangelog = newChangelog + '\n'
+  newChangelog = newChangelog + '\n\n'
 }
 if (behindTheScenes.length > 0) {
-  newChangelog = newChangelog + 'New features \n'
+  newChangelog = newChangelog + 'Behind the scenes: \n'
   behindTheScenes.forEach((behindTheScene) => (newChangelog = newChangelog + behindTheScene))
-  newChangelog = newChangelog + '\n'
+  newChangelog = newChangelog + '\n\n'
 }
 if (SEO.length > 0) {
-  newChangelog = newChangelog + 'New features \n'
+  newChangelog = newChangelog + 'Potential impact on SEO, tracking or revenue: \n'
   SEO.forEach((seo) => (newChangelog = newChangelog + seo))
-  newChangelog = newChangelog + '\n'
+  newChangelog = newChangelog + '\n\n'
 }
 
 fs.writeFileSync('./CHANGELOG.md', `${newChangelog}${currentChangelog}`)
