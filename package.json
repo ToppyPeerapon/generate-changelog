@@ -1,5 +1,5 @@
 {
-	"version": "1",
+	"version": "1.01",
 	"name": "generate-changelog",
 	"main": "index.js",
 	"repository": "https://github.com/ToppyPeerapon/generate-changelog.git",
