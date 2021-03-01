@@ -1,3 +1,14 @@
 {
-	"version": "1"
+	"version": "1",
+	"name": "generate-changelog",
+	"main": "index.js",
+	"repository": "https://github.com/ToppyPeerapon/generate-changelog.git",
+	"author": "ToppyPeerapon <chun.peerapon@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"prettier": "^2.2.1"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.31"
+	}
 }
